@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=DM+Serif+Text:ital@0;1&family=Rubik+Vinyl&display=swap" rel="stylesheet">
+    <title>Weather</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="head">
+        <h1>Type in your city</h1>
+        <form method="POST" action="/">
+            <input type="text" name="location" placeholder="Type in your location city or postcode">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    {% if location %}
+        {% if error %}
+            <h2>{{ error }}</h2>
+        {% else %}
+            <div class="location">
+                <h1 class="rubik-vinyl-regular">{{ location }}</h1>
+            </div>
+
+            <div class="weather-cards">
+                {% for data in forecast_data %}
+                    <div class="card">
+                        <h1>{{ weekday(data["date"]) }}</h1>
+                        <div class="day">    
+                            <div>
+                                <img src="static/icons/sunrise.png" alt="sunrise"> {{ data["astro"]["sunrise"] }}
+                            </div> 
+                            <div>
+                                <img src="static/icons/sunset.png" alt="sunset"> {{ data["astro"]["sunset"] }}
+                            </div> 
+                        </div>
+
+                        <div class="condition">
+                            <h1>{{data["day"]["condition"]["text"]}}<img src={{ data["day"]["condition"]["icon"] }} alt="weather png"></h1> 
+                        </div>
+
+                        <div class="day">    
+                            <div>
+                                <img src="static/icons/high-temp.png" alt="max temperature"> {{ data["day"]["maxtemp_c"] }}℃
+                            </div> 
+                            <div>
+                                <img src="static/icons/low-temp.png" alt="min temperature"> {{ data["day"]["mintemp_c"] }}℃
+                            </div> 
+                        </div>
+
+                        <div class="day">    
+                            <div>
+                                <img src="static/icons/humidity.png" alt="humidity"> {{ data["day"]["avghumidity"] }}% 
+                            </div> 
+                            <div>
+                                <img src="static/icons/wind-speed.png" alt="windspeed"> {{ data["day"]["maxwind_kph"] }}kph
+                            </div> 
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+        {% endif %}
+    {% endif %}
+</body>
+</html>
