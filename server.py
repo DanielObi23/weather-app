@@ -1,9 +1,11 @@
 from flask import render_template, Flask, request
 import requests
 from datetime import datetime
+import os
+from dotenv import load_dotenv
 
-API_KEY = "a3ce1f4be62f4c4daa8195313250801"
-
+load_dotenv()
+API_KEY = os.getenv('API_KEY')
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])

@@ -1,18 +1,18 @@
-/* TODO: do the tasks in the comments section using javascript  */
-
-
 body {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     /* if day time: background: linear-gradient(rgb(255, 170, 0), #ffea00d8, rgb(255, 170, 0), #000957,#000957);  */
-    /* background: linear-gradient(#000957, orange); */
+    background: linear-gradient(#000957, orange);
     /* black if day time */
-    /* color: rgb(232, 221, 221); */
-    color: black;
+    color: rgb(232, 221, 221);
     height: 100%;
     width: 100%;
+}
+
+.location {
+    font-size: 2rem;
 }
 
 .card {
@@ -24,7 +24,8 @@ body {
     margin: 1rem;
     padding: 1rem;
     background: linear-gradient(#344CB7, #577BC1);
-    height: 50rem;
+    height: 40rem;
+    box-shadow: 10px 10px 5px #000536;
     /* opacity: 1 !important; */
 }
 
@@ -95,4 +96,3 @@ main > * {
 .condition {
     text-align: center;
 }
-
